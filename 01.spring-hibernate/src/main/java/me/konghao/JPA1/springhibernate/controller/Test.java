@@ -69,6 +69,7 @@ public class Test {
 
 	@RequestMapping(value = "sqlTop50")
 	public List<UserInfo> sqlTop50() {
+		
 		return this.userInfoService.sqlQueryTop50();
 	}
 	/*
