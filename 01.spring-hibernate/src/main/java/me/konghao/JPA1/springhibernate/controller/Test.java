@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
+import org.aspectj.weaver.patterns.HasMemberTypePatternForPerThisMatching;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -54,6 +56,7 @@ public class Test {
 		iterList.forEach(a -> {
 			users.add(a);
 		});
+
 		return users;
 	}
 
@@ -69,9 +72,54 @@ public class Test {
 
 	@RequestMapping(value = "sqlTop50")
 	public List<UserInfo> sqlTop50() {
-		
+
 		return this.userInfoService.sqlQueryTop50();
 	}
+
+	@RequestMapping("queryByName")
+	public UserInfo queryByName(@RequestParam("name") String name) {
+		return this.userInfoService.queryByName(name);
+
+	}
+
+	@RequestMapping("queryNameLike")
+	public List<UserInfo> queryNameLike(@RequestParam("name") String name, @RequestParam("minId") Integer minId,
+			@RequestParam("maxId") Integer maxId) {
+		return this.userInfoService.queryNameLike(name, minId, maxId);
+	}
+
+	@RequestMapping("updateAgeById")
+	public String updateAgeById(String age, Integer id) {
+		this.userInfoService.updateAgeById(age, id);
+		return "OK";
+		// org.springframework.transaction.annotation.Transactional
+	}
+
+	@RequestMapping("queryPageOrderIdAscAgeDesc")
+	public List<UserInfo> queryPageOrderIdDescAgeAsc() {
+		return this.userInfoService.queryPageOrderIdAscAgeDesc();
+	}
+
+	@RequestMapping("JpaFindAll")
+	public List<UserInfo> JpaFindAll() {
+		return this.userInfoService.JpaFindAll();
+	}
+
+	@RequestMapping("jpaSDaoOnely")
+	public List<UserInfo> jpaSDaoOnely() {
+		return this.userInfoService.jpaSDaoOnely();
+	}
+
+	@RequestMapping("jpaSDaoMulti")
+	public List<UserInfo> jpaSDaoMulti() {
+		return this.userInfoService.jpaSDaoMulti();
+	}
+	
+	@RequestMapping("jpaSDaoPageMulti")
+	public List<UserInfo> jpaSDaoPageMulti() {
+		return this.userInfoService.jpaSDaoPageMulti();
+	}
+	
 	/*
 	 * public List<UserInfo> Test1() { return userInfoDao.f }
 	 */
