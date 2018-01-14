@@ -1,7 +1,6 @@
 package me.konghao.JPA1.springhibernate.Service;
 
-import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
-import org.dom4j.CDATA;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,8 +18,6 @@ import me.konghao.JPA1.springhibernate.InterFace.UserInfoDao;
 import me.konghao.JPA1.springhibernate.InterFace.UserInfoDaoPage;
 import me.konghao.JPA1.springhibernate.entity.UserInfo;
 
-import static org.assertj.core.api.Assertions.allOf;
-import static org.hamcrest.CoreMatchers.nullValue;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import me.konghao.JPA1.springhibernate.InterFace.UserInfoDao;
 import me.konghao.JPA1.springhibernate.InterFace.UserInfoDaoPage;
+import me.konghao.JPA1.springhibernate.Service.IUserInfoImpl;
 import me.konghao.JPA1.springhibernate.Service.UserInfoService;
 import me.konghao.JPA1.springhibernate.entity.UserInfo;
 
@@ -37,6 +38,9 @@ public class Test {
 	private UserInfoDaoPage pageDao;
 	@PersistenceContext
 	private EntityManager em;
+
+	@Autowired
+	private IUserInfoImpl userinfoIdao;
 
 	@RequestMapping(value = "query", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
 	public List<UserInfo> query() {
@@ -114,12 +118,16 @@ public class Test {
 	public List<UserInfo> jpaSDaoMulti() {
 		return this.userInfoService.jpaSDaoMulti();
 	}
-	
+
 	@RequestMapping("jpaSDaoPageMulti")
 	public List<UserInfo> jpaSDaoPageMulti() {
 		return this.userInfoService.jpaSDaoPageMulti();
 	}
-	
+
+	@RequestMapping("queryById")
+	public UserInfo queryById(@RequestParam("id") Integer id) {
+		return this.userinfoIdao.queryById(id);
+	}
 	/*
 	 * public List<UserInfo> Test1() { return userInfoDao.f }
 	 */

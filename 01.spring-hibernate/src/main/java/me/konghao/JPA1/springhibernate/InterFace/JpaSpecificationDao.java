@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import me.konghao.JPA1.springhibernate.entity.UserInfo;
 
-public interface JpaSpecificationDao extends JpaRepository<UserInfo, Integer>, JpaSpecificationExecutor<UserInfo> {
+public interface JpaSpecificationDao extends JpaRepository<UserInfo, Integer>, JpaSpecificationExecutor<UserInfo>,UserInfoRepository {
 
 }
