@@ -8,55 +8,76 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_userinfo")
 public class UserInfo implements Serializable {
-
-	private static final long serialVersionUID = 2300044412175011558L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
-	private int id;
-	@Column(nullable = false, name = "name")
+	private Integer id;
+	@Column(name = "name", nullable = false)
 	private String name;
-	@Column(nullable = false, name = "age")
+	@Column(name = "age", nullable = false)
 	private String age;
-	@Column(nullable = false, name = "address")
+	@Column(name = "address", nullable = false)
 	private String address;
 
+	/**
+	 * 
+	 **/
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * 
+	 **/
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * 
+	 **/
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * 
+	 **/
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * 
+	 **/
 	public String getAge() {
 		return age;
 	}
 
+	/**
+	 * 
+	 **/
 	public void setAge(String age) {
 		this.age = age;
 	}
 
+	/**
+	 * 
+	 **/
 	public String getAddress() {
 		return address;
 	}
 
+	/**
+	 * 
+	 **/
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	@Override
 	public String toString() {
-		return "UserInfo{" + "id=" + id + ", name='" + name + '\'' + ", age='" + age + '\'' + ", address='" + address
-				+ '\'' + '}';
+		return "Userinfo{" + "'id'='" + id + "'" + ",'name'='" + name + "'" + ",'age'='" + age + "'" + ",'address'='"
+				+ address + "'" + '}';
 	}
 }
