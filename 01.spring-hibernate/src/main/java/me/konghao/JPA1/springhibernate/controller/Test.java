@@ -20,8 +20,7 @@ import me.konghao.JPA1.springhibernate.InterFace.UserInfoDao;
 import me.konghao.JPA1.springhibernate.InterFace.UserInfoDaoPage;
 import me.konghao.JPA1.springhibernate.Service.IUserInfoImpl;
 import me.konghao.JPA1.springhibernate.Service.UserInfoService;
-import me.konghao.JPA1.springhibernate.entity.UserInfo;
-
+import me.konghao.JPA1.springhibernate.entity.*;
 @RestController
 public class Test {
 	@RequestMapping("test")
@@ -45,14 +44,14 @@ public class Test {
 	@RequestMapping(value = "query", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
 	public List<UserInfo> query() {
 		List<UserInfo> users = userInfoService.query();
-
+		
 		return users;
 	}
 
 	@RequestMapping(value = "pageQuery")
 	public List<UserInfo> pageQuery(@RequestParam("page") int page, @RequestParam("size") int size) {
 		// PageRequest
-
+		
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
 		Pageable pageable = new PageRequest(page, size, sort);
 		Iterable<UserInfo> iterList = userInfoService.findAllPage(pageable);
